@@ -1,0 +1,30 @@
+# Virtual Environment
+.venv/
+env/
+venv/
+ENV/
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Secrets & Environment Variables (DO NOT COMMIT)
+config/
+.env
+*.env
+*.key
+*openai_key*
+*secret*
+
+# Runtime data (preserves local edits, allows fresh uploads)
+data/*.xlsx
+!data/.gitkeep
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log

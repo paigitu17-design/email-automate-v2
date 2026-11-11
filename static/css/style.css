@@ -1,0 +1,531 @@
+/* ==========================================================================
+   Amanah Data Solutions — Executive Design System
+   UAE Banking Intelligence & Outreach Platform
+   ========================================================================== */
+
+:root {
+  --navy-900: #0a192f;
+  --navy-800: #0f2942;
+  --navy-700: #1a365d;
+  --navy-600: #2b4c7e;
+  --blue-600: #0284c7;
+  --blue-500: #0ea5e9;
+  --teal-600: #0d9488;
+  --emerald-600: #059669;
+  --emerald-500: #10b981;
+  --linkedin-blue: #0a66c2;
+  --slate-900: #0f172a;
+  --slate-800: #1e293b;
+  --slate-700: #334155;
+  --slate-600: #475569;
+  --slate-500: #64748b;
+  --slate-400: #94a3b8;
+  --slate-200: #e2e8f0;
+  --slate-100: #f1f5f9;
+  --slate-50:  #f8fafc;
+  --canvas:    #f4f6f9;
+  --surface:   #ffffff;
+}
+
+body {
+  background-color: var(--canvas);
+  color: var(--slate-800);
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --------------------------------------------------------------------------
+   App Navbar
+   -------------------------------------------------------------------------- */
+.app-navbar {
+  background-color: var(--navy-900);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  min-height: 68px;
+}
+
+.brand-logo-icon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #0ea5e9, #059669);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.82rem;
+  color: #ffffff;
+  letter-spacing: -0.05em;
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.35);
+}
+
+.brand-text-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  line-height: 1.15;
+}
+
+.brand-dot {
+  color: #10b981;
+}
+
+.brand-subtitle {
+  font-size: 0.7rem;
+  color: #94a3b8;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.bg-emerald-subtle {
+  background-color: rgba(16, 185, 129, 0.15);
+}
+
+.text-emerald {
+  color: #34d399 !important;
+}
+
+.border-emerald-subtle {
+  border-color: rgba(16, 185, 129, 0.25) !important;
+}
+
+.pulse-dot {
+  width: 7px;
+  height: 7px;
+  background-color: #10b981;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.4);
+  animation: pulse-ring 2s infinite;
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
+  70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.export-btn, .report-btn {
+  font-size: 0.8rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+}
+
+/* --------------------------------------------------------------------------
+   Welcome Card & Top Headers
+   -------------------------------------------------------------------------- */
+.welcome-card {
+  border: 1px solid var(--slate-200);
+}
+
+.text-navy {
+  color: var(--navy-800) !important;
+}
+
+.bg-navy {
+  background-color: var(--navy-800) !important;
+}
+
+.btn-navy {
+  background-color: var(--navy-800);
+  border-color: var(--navy-800);
+  color: #ffffff;
+  font-weight: 600;
+  transition: all 0.15s ease;
+}
+.btn-navy:hover {
+  background-color: var(--navy-900);
+  border-color: var(--navy-900);
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   Stat KPI Cards
+   -------------------------------------------------------------------------- */
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--slate-200);
+  border-radius: 10px;
+  padding: 1.1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  height: 100%;
+  min-height: 102px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.stat-label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--slate-500);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stat-value {
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--navy-800);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.stat-sub {
+  font-size: 0.72rem;
+  color: var(--slate-400);
+}
+
+.border-linkedin {
+  border-color: var(--linkedin-blue) !important;
+}
+
+.tracker-card-success {
+  background: linear-gradient(180deg, rgba(240, 253, 244, 0.7) 0%, #ffffff 100%);
+}
+
+.tracker-card-info {
+  background: linear-gradient(180deg, rgba(240, 249, 255, 0.7) 0%, #ffffff 100%);
+}
+
+/* --------------------------------------------------------------------------
+   Panels & Coverage Section
+   -------------------------------------------------------------------------- */
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--slate-200);
+  border-radius: 10px;
+}
+
+.coverage-summary {
+  background: #e0f2fe;
+  color: #0369a1;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.35rem 0.75rem;
+  border-radius: 99px;
+}
+
+.coverage-scrollable {
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.coverage-pill {
+  border-radius: 99px;
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  white-space: nowrap;
+}
+
+.coverage-pill.green {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+.coverage-pill.amber {
+  background-color: #fef3c7;
+  color: #b45309;
+}
+
+.coverage-pill.red {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+.insights-content {
+  line-height: 1.65;
+  padding: 1rem 1.25rem;
+  background-color: #fbfcfe;
+  border-radius: 0 0 10px 10px;
+  white-space: pre-line;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+/* --------------------------------------------------------------------------
+   Filter & Directory Controls
+   -------------------------------------------------------------------------- */
+.bank-select {
+  min-width: 210px;
+  font-weight: 600;
+  color: var(--navy-800);
+  border-color: #cbd5e1;
+}
+
+.filter-select {
+  min-width: 220px;
+  font-weight: 500;
+  border-color: #cbd5e1;
+}
+
+.search-input {
+  min-width: 220px;
+  border-color: #cbd5e1;
+}
+
+/* --------------------------------------------------------------------------
+   Contacts Table
+   -------------------------------------------------------------------------- */
+.contacts-table {
+  min-width: 1060px;
+}
+
+.contacts-table thead th {
+  background-color: #f8fafc;
+  color: var(--slate-600);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.85rem 0.8rem;
+  border-bottom: 1px solid var(--slate-200);
+  white-space: nowrap;
+}
+
+.contacts-table th[data-sort] {
+  cursor: pointer;
+  user-select: none;
+}
+.contacts-table th[data-sort]:hover {
+  background-color: #edf2f7;
+  color: var(--navy-800);
+}
+.contacts-table th[data-sort] span {
+  color: #94a3b8;
+  font-size: 0.75rem;
+}
+
+.contacts-table tbody td {
+  padding: 0.75rem 0.8rem;
+  border-bottom: 1px solid #edf2f7;
+  font-size: 0.82rem;
+}
+
+.contacts-table tbody tr {
+  transition: background-color 0.12s ease;
+}
+
+.contacts-table tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+.serial-th, .serial-cell {
+  font-family: 'Inter', monospace;
+  font-size: 0.78rem;
+  color: #94a3b8;
+}
+
+/* Contact Identity */
+.contact-identity {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.contact-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.78rem;
+  color: #ffffff;
+  flex-shrink: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-name-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--slate-900);
+  line-height: 1.25;
+}
+
+.contact-designation-badge {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: #475569;
+  background: #f1f5f9;
+  border-radius: 4px;
+  padding: 0.15rem 0.45rem;
+  margin-top: 0.2rem;
+  display: inline-block;
+  width: fit-content;
+}
+
+.contact-email-link {
+  color: #0369a1;
+  font-size: 0.82rem;
+}
+.contact-email-link:hover {
+  text-decoration: underline !important;
+}
+
+/* --------------------------------------------------------------------------
+   Confidence Score Badges
+   -------------------------------------------------------------------------- */
+.badge-score-high {
+  background-color: #dcfce7;
+  color: #15803d;
+  border: 1px solid #86efac;
+  font-weight: 700;
+  font-size: 0.74rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  cursor: help;
+}
+
+.badge-score-med {
+  background-color: #e0f2fe;
+  color: #0369a1;
+  border: 1px solid #7dd3fc;
+  font-weight: 700;
+  font-size: 0.74rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  cursor: help;
+}
+
+.badge-score-low {
+  background-color: #f1f5f9;
+  color: #64748b;
+  border: 1px solid #cbd5e1;
+  font-weight: 600;
+  font-size: 0.74rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  cursor: help;
+}
+
+/* --------------------------------------------------------------------------
+   Live Tracker Buttons
+   -------------------------------------------------------------------------- */
+.btn-xs {
+  font-size: 0.7rem;
+  padding: 0.22rem 0.5rem;
+  border-radius: 5px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.toggle-sent, .toggle-li {
+  min-width: 98px;
+  transition: all 0.15s ease;
+  letter-spacing: 0.01em;
+}
+
+.toggle-sent:hover, .toggle-li:hover {
+  transform: scale(1.02);
+}
+
+/* --------------------------------------------------------------------------
+   Outreach Action Buttons
+   -------------------------------------------------------------------------- */
+.btn-outreach-email {
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  border: none;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.78rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(2, 132, 199, 0.2);
+  transition: all 0.15s ease;
+}
+.btn-outreach-email:hover {
+  background: linear-gradient(135deg, #0369a1, #075985);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(2, 132, 199, 0.3);
+}
+
+.btn-outreach-linkedin {
+  background: linear-gradient(135deg, #0a66c2, #004182);
+  border: none;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.78rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(10, 102, 194, 0.2);
+  transition: all 0.15s ease;
+}
+.btn-outreach-linkedin:hover {
+  background: linear-gradient(135deg, #004182, #002952);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(10, 102, 194, 0.3);
+}
+
+.btn-outreach-linkedin.pulse-highlight {
+  box-shadow: 0 0 0 3px rgba(10, 102, 194, 0.25);
+  font-weight: 700;
+}
+
+.btn-linkedin {
+  background-color: var(--linkedin-blue);
+  border-color: var(--linkedin-blue);
+  color: #ffffff;
+}
+.btn-linkedin:hover {
+  background-color: #004182;
+  border-color: #004182;
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   Modals
+   -------------------------------------------------------------------------- */
+.modal-content {
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.message-preview {
+  font-family: inherit;
+  font-size: 0.86rem;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+/* --------------------------------------------------------------------------
+   Scrollbar styling
+   -------------------------------------------------------------------------- */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

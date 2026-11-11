@@ -1,0 +1,18 @@
+
+
+
+1. its like a tool
+2. once opening upload the excel sheet.
+3. on uploading the excel collcet all the email ids and linkedin profiles in separate column but each as associated per bank and per person.
+4. after that an option to review and send the email and also i want to send message in linkedin so i want you to 
+send a message to the associated linkedin profile after review. 
+5. do this first.
+
+
+
+Apollo
+Hunter.io
+Snov.io
+RocketReach
+ZoomInfo
+Use Google/Bing search.
