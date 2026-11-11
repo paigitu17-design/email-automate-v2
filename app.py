@@ -183,13 +183,46 @@ def coverage_for(records):
                 for alias in aliases
             ):
                 banks[bank].add(role)
+    # Bank tier mapping (Tier 2 & 3 are the primary targets)
+    BANK_TIERS = {
+        "first abu dhabi bank (fab)": "Tier 1",
+        "emirates nbd": "Tier 1",
+        "abu dhabi commercial bank (adcb)": "Tier 1",
+        "dubai islamic bank (dib)": "Tier 2",
+        "mashreq": "Tier 2",
+        "abu dhabi islamic bank (adib)": "Tier 2",
+        "emirates islamic": "Tier 2",
+        "commercial bank of dubai (cbd)": "Tier 2",
+        "rakbank": "Tier 2",
+        "national bank of fujairah (nbf)": "Tier 2",
+        "sharjah islamic bank (sib)": "Tier 2",
+        "bank of sharjah": "Tier 3",
+        "invest bank": "Tier 3",
+        "united arab bank (uab)": "Tier 3",
+        "commercial bank international (cbi)": "Tier 3",
+        "ajman bank": "Tier 3",
+        "national bank of umm al qaiwain (nbq)": "Tier 3",
+        "al masraf": "Tier 3",
+        "emirates investment bank": "Tier 3",
+        "al maryah community bank": "Tier 3",
+        "wio bank": "Tier 3",
+        "zand bank": "Tier 3",
+    }
     result = []
     for bank, found in sorted(banks.items(), key=lambda item: item[0].casefold()):
         percentage = round(100 * len(found) / len(REQUIRED_ROLES))
         color = "green" if percentage > 80 else "amber" if percentage > 50 else "red"
+        tier = BANK_TIERS.get(bank.lower().split(" (arab")[0].strip().lower(), "")
+        if not tier:
+            # fuzzy match by partial name
+            for key, t in BANK_TIERS.items():
+                if key[:10] in bank.lower():
+                    tier = t
+                    break
         result.append(
             {
                 "bank": bank,
+                "tier": tier,
                 "found": sorted(found, key=REQUIRED_ROLES.index),
                 "count": len(found),
                 "total": len(REQUIRED_ROLES),

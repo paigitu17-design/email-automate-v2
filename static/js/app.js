@@ -222,7 +222,7 @@
       return `
       <tr>
         <td class="text-center text-muted fw-bold serial-cell">${serialNo}</td>
-        <td class="fw-semibold text-nowrap"><span class="badge bg-light text-navy border px-2 py-1">${escapeHtml(contact["Bank Name"])}</span></td>
+        <td class="fw-semibold text-nowrap"><span class="bank-badge">${escapeHtml(contact["Bank Name"])}</span></td>
         <td>
           <div class="contact-identity">
             <div class="contact-avatar" style="background-color: ${getAvatarColor(contact["Person Name"])}">
@@ -262,14 +262,18 @@
     $("#discover-all").prop("disabled", !stats.total_contacts);
     $("#empty-state").toggleClass("d-none", !!stats.total_contacts);
 
-    const body = coverage.length ? coverage.map((bank) => `
-      <tr>
-        <td class="fw-semibold text-navy">${escapeHtml(bank.bank)}</td>
-        <td>${bank.count} / ${bank.total}</td>
-        <td><span class="coverage-pill ${bank.color}">${bank.percentage}%</span></td>
-        <td class="small text-secondary">${escapeHtml(bank.missing.length ? bank.missing.join(", ") : "All roles covered")}</td>
-      </tr>`).join("")
-      : '<tr><td colspan="4" class="text-center text-secondary py-4">Upload a workbook to see bank coverage.</td></tr>';
+    const tierClass = { "Tier 1": "tier-1", "Tier 2": "tier-2", "Tier 3": "tier-3" };
+    const body = coverage.length ? coverage.map((bank) => {
+      const tc = tierClass[bank.tier] || "tier-3";
+      const tierBadge = bank.tier ? `<span class="tier-badge ${tc}">${escapeHtml(bank.tier)}</span>` : "";
+      return `
+      <tr style="border-bottom:1px solid rgba(107,25,48,0.07);">
+        <td style="padding:0.65rem 1rem; font-weight:600; color:#1a1a1a; font-size:0.84rem;">${escapeHtml(bank.bank)}</td>
+        <td style="padding:0.65rem 0.6rem;">${tierBadge}</td>
+        <td style="padding:0.65rem 0.6rem;"><span class="coverage-pill ${bank.color}">${bank.percentage}%</span></td>
+      </tr>`;
+    }).join("")
+      : '<tr><td colspan="3" class="text-center text-muted py-4" style="font-size:0.84rem;">Upload a workbook to see bank coverage.</td></tr>';
     $("#coverage-body").html(body);
   }
 

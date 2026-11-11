@@ -1,0 +1,12 @@
+Sending Emails from Her Gmail:
+
+The app uses client-side Gmail Web Compose (https://mail.google.com/mail/?view=cm&...).
+When your boss opens the Render link on her computer and clicks 📧 Open in Gmail, it opens a new tab in her browser, logged into her own Google Workspace / Gmail account, with the executive’s email, subject, and 4-paragraph proposal already filled out.
+
+It sends directly from her email address, with no SMTP or backend server access required.
+
+Sending Messages from Her LinkedIn:
+When she clicks 🌐 Open LinkedIn Profile & Send, it opens the executive's profile in her browser logged into her own LinkedIn account. She simply pastes the 1-click copied note and sends it from her own profile.
+
+Shared Real-Time Tracker:
+Because the app runs on a central Render URL (e.g., https://amanah-outreach.onrender.com), whenever she clicks "Mark as Emailed" or "Open in Gmail", the live counter updates for the entire team.

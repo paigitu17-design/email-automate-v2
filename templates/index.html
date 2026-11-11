@@ -3,145 +3,158 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Amanah Data Solutions — UAE Banking Executive Outreach &amp; Intelligence</title>
+  <title>Amanah Data Solutions — UAE Banking Executive Intelligence</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark app-navbar py-2 sticky-top shadow-sm">
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="navbar navbar-expand-lg app-navbar py-2">
     <div class="container-fluid px-lg-5">
-      <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="/">
-        <div class="brand-logo-icon">
-          <span>ADS</span>
-        </div>
+      <a class="navbar-brand d-flex align-items-center gap-2 text-decoration-none" href="/">
+        <div class="brand-logo-icon">ADS</div>
         <div class="brand-text-group">
           <span class="brand-title">Amanah Data Solutions<span class="brand-dot">.</span></span>
-          <span class="brand-subtitle d-none d-sm-block">UAE Banking Regulatory &amp; Executive Intelligence</span>
+          <span class="brand-subtitle d-none d-md-block">UAE Banking Regulatory Intelligence Platform</span>
         </div>
       </a>
       <div class="ms-auto d-flex align-items-center gap-2">
-        <span class="badge bg-emerald-subtle text-emerald border border-emerald-subtle d-none d-md-inline-flex align-items-center gap-1 py-1 px-2">
-          <span class="pulse-dot"></span> 22 UAE Banks Active
+        <span class="nav-status-badge d-none d-md-flex align-items-center gap-2">
+          <span class="pulse-dot"></span> Tier 2 &amp; 3 Target Active
         </span>
-        <a class="btn btn-sm btn-outline-light d-flex align-items-center gap-1 export-btn" href="{{ url_for('export_contacts') }}" title="Download all contacts with live outreach status">
-          <span>📥</span> <span class="d-none d-sm-inline">Export Excel Tracker</span>
+        <a class="btn-nav-export d-flex align-items-center gap-1" href="{{ url_for('export_contacts') }}">
+          <span>📥</span> <span class="d-none d-sm-inline">Export Tracker</span>
         </a>
-        <a class="btn btn-sm btn-light fw-semibold d-flex align-items-center gap-1 report-btn" href="{{ url_for('export_report') }}" title="Export coverage report">
-          <span>📊</span> <span class="d-none d-sm-inline">Bank Coverage Report</span>
+        <a class="btn-nav-report d-flex align-items-center gap-1" href="{{ url_for('export_report') }}">
+          <span>📊</span> <span class="d-none d-sm-inline">Coverage Report</span>
         </a>
       </div>
     </div>
   </nav>
 
-  <main class="container-fluid px-lg-5 py-4">
+  <!-- ═══ HERO WELCOME BAND ═══ -->
+  <section class="welcome-hero">
+    <div class="container-fluid px-lg-5">
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-4">
+        <div>
+          <div class="hero-eyebrow">
+            <span>🏦</span> UAE BANKING — TIER 2 &amp; TIER 3 EXECUTIVE OUTREACH
+          </div>
+          <h1 class="hero-title">Executive Pipeline &amp; <span>Outreach Command</span></h1>
+          <p class="hero-sub">Generate consultative 4-paragraph Amanah proposals, draft directly in Gmail, and launch LinkedIn outreach sequences — with live delivery tracking across all UAE financial institutions.</p>
+        </div>
+        <div class="hero-upload-card">
+          <div class="hero-upload-label">📂 Upload Executive Workbook</div>
+          <form class="d-flex flex-wrap gap-2 align-items-center" action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+            <input class="form-control form-control-sm bg-white" style="min-width:220px; border-color: rgba(200,151,58,0.3);" type="file" name="file" accept=".xlsx,.xls" required>
+            <button class="btn-upload-gold" type="submit">⬆ Upload Excel</button>
+          </form>
+          <p class="mt-2 mb-0" style="font-size:0.68rem; color:rgba(255,255,255,0.5);">Accepts .xlsx / .xls · UAE Banks, Tier &amp; Executive roles auto-detected</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FLASH MESSAGES ═══ -->
+  <div class="container-fluid px-lg-5 pt-3">
     {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        {% for category, message in messages %}
-          <div class="alert alert-{{ category }} alert-dismissible fade show shadow-sm d-flex justify-content-between align-items-center" role="alert">
-            <span>{{ message }}</span>
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-          </div>
-        {% endfor %}
-      {% endif %}
+      {% if messages %}{% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show shadow-sm" role="alert">
+          {{ message }}<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+      {% endfor %}{% endif %}
     {% endwith %}
+  </div>
 
-    <!-- Top Executive Header Banner -->
-    <section class="welcome-card mb-4 p-4 bg-white rounded-3 shadow-sm border d-flex flex-wrap justify-content-between align-items-center gap-3">
-      <div>
-        <div class="d-flex align-items-center gap-2 mb-2">
-          <span class="badge bg-primary text-white fw-semibold px-2 py-1">UAE TIER 1, 2 &amp; 3 BANKS</span>
-          <span class="badge bg-success text-white fw-semibold px-2 py-1">● Live Multi-Channel Tracker</span>
-        </div>
-        <h1 class="h4 fw-bold mb-1 text-navy">Executive Pipeline &amp; Outreach Command Center</h1>
-        <p class="text-secondary small mb-0">Generate consultative 4-paragraph Amanah proposals, draft directly in Gmail, launch LinkedIn outreach, and track delivery progress across all UAE financial institutions.</p>
-      </div>
-      <form class="upload-form d-flex flex-wrap gap-2 align-items-center" action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
-        <div class="input-group input-group-sm">
-          <input class="form-control" type="file" name="file" accept=".xlsx,.xls" required aria-label="Upload Updated Excel">
-          <button class="btn btn-navy text-nowrap px-3" type="submit">⬆ Upload Excel</button>
-        </div>
-      </form>
-    </section>
+  <main class="container-fluid px-lg-5 py-4">
 
-    <!-- Executive Tracker Summary Cards (6 KPIs) -->
-    <section class="row g-3 mb-4" id="stat-cards">
+    <!-- ═══ KPI CARDS ═══ -->
+    <div class="row g-3 kpi-grid mb-4" id="stat-cards">
       <div class="col-6 col-md-4 col-xl-2">
-        <div class="stat-card border-top border-4 border-primary">
-          <span class="stat-label">Total Executives</span>
-          <strong class="stat-value">{{ stats.total_contacts }}</strong>
-          <span class="stat-sub">Across 22 UAE Banks</span>
+        <div class="kpi-card">
+          <span class="kpi-label">Total Executives</span>
+          <strong class="kpi-value">{{ stats.total_contacts }}</strong>
+          <span class="kpi-sub">Across {{ stats.total_banks }} UAE Banks</span>
         </div>
       </div>
       <div class="col-6 col-md-4 col-xl-2">
-        <div class="stat-card border-top border-4 border-info">
-          <span class="stat-label">Banks Covered</span>
-          <strong class="stat-value">{{ stats.total_banks }}</strong>
-          <span class="stat-sub">Tier 1, 2 &amp; 3 Institutions</span>
+        <div class="kpi-card">
+          <span class="kpi-label">Banks Covered</span>
+          <strong class="kpi-value">{{ stats.total_banks }}</strong>
+          <span class="kpi-sub">Tier 1, 2 &amp; 3 Institutions</span>
         </div>
       </div>
       <div class="col-6 col-md-4 col-xl-2">
-        <div class="stat-card border-top border-4 border-primary">
-          <span class="stat-label">Emails on File</span>
-          <strong class="stat-value">{{ stats.emails_found }}</strong>
-          <span class="stat-sub">Corporate &amp; Direct Inboxes</span>
+        <div class="kpi-card">
+          <span class="kpi-label">Emails on File</span>
+          <strong class="kpi-value">{{ stats.emails_found }}</strong>
+          <span class="kpi-sub">Corporate &amp; Direct Inboxes</span>
         </div>
       </div>
       <div class="col-6 col-md-4 col-xl-2">
-        <div class="stat-card border-top border-4 border-linkedin">
-          <span class="stat-label">LinkedIn Profiles</span>
-          <strong class="stat-value">{{ stats.linkedin_found }}</strong>
-          <span class="stat-sub">Direct Executive URLs</span>
+        <div class="kpi-card">
+          <span class="kpi-label">LinkedIn Profiles</span>
+          <strong class="kpi-value">{{ stats.linkedin_found }}</strong>
+          <span class="kpi-sub">Direct Executive URLs</span>
         </div>
       </div>
       <div class="col-6 col-md-4 col-xl-2">
-        <div class="stat-card border-top border-4 border-success tracker-card-success">
-          <div class="d-flex align-items-center justify-content-between">
-            <span class="stat-label text-success fw-bold">✉️ Emails Sent</span>
-            <span class="badge bg-success text-white py-0 px-1 font-monospace small">OUTREACH</span>
-          </div>
-          <strong class="stat-value text-success" id="stat-emails-sent">{{ stats.emails_sent }}</strong>
-          <span class="stat-sub text-success fw-medium">Proposal Delivered</span>
+        <div class="kpi-card tracker-email">
+          <span class="kpi-label" style="color:#16a34a;">✉️ Emails Sent</span>
+          <strong class="kpi-value" id="stat-emails-sent" style="color:#15803d;">{{ stats.emails_sent }}</strong>
+          <span class="kpi-sub">Proposal Delivered</span>
         </div>
       </div>
       <div class="col-6 col-md-4 col-xl-2">
-        <div class="stat-card border-top border-4 border-info tracker-card-info">
-          <div class="d-flex align-items-center justify-content-between">
-            <span class="stat-label text-info-emphasis fw-bold">💼 LI Contacted</span>
-            <span class="badge bg-info text-white py-0 px-1 font-monospace small">OUTREACH</span>
-          </div>
-          <strong class="stat-value text-info-emphasis" id="stat-li-contacted">{{ stats.linkedin_contacted }}</strong>
-          <span class="stat-sub text-info-emphasis fw-medium">InMail / Message Sent</span>
+        <div class="kpi-card tracker-li">
+          <span class="kpi-label" style="color:#0a66c2;">💼 LI Contacted</span>
+          <strong class="kpi-value" id="stat-li-contacted" style="color:#0a66c2;">{{ stats.linkedin_contacted }}</strong>
+          <span class="kpi-sub">InMail / Message Sent</span>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- Bank Role Coverage & AI Strategic Insights -->
-    <section class="row g-3 mb-4">
+    <!-- ═══ COVERAGE & INSIGHTS ═══ -->
+    <div class="row g-3 mb-4">
       <div class="col-lg-8">
-        <div class="panel h-100 shadow-sm">
-          <div class="panel-heading d-flex justify-content-between align-items-center flex-wrap gap-2 border-bottom">
+        <div class="panel h-100">
+          <div class="panel-header">
             <div>
-              <h2 class="h5 fw-bold mb-1 text-navy">UAE Bank Executive Coverage</h2>
-              <p class="small text-secondary mb-0">Tracking 11 key leadership roles (CEO, CRO, CFO, CAO, Head of Data, Compliance, IT, Risk, etc.).</p>
+              <h2 class="h5 fw-bold mb-0">UAE Bank Executive Coverage</h2>
+              <p class="small mb-0 mt-1">Priority focus: Tier 2 &amp; Tier 3 institutions — 11 key leadership roles tracked</p>
             </div>
-            <span class="coverage-summary">{{ stats.contact_coverage }}% contact coverage</span>
+            <span class="coverage-pill-badge">{{ stats.contact_coverage }}% coverage</span>
           </div>
-          <div class="table-responsive coverage-scrollable">
+          <div class="panel-body coverage-scrollable">
             <table class="table table-sm align-middle mb-0">
-              <thead><tr><th>Bank</th><th>Found</th><th>Coverage</th><th>Missing Key Roles</th></tr></thead>
+              <thead>
+                <tr>
+                  <th style="font-size:0.7rem; font-weight:800; text-transform:uppercase; color:#6b1930; padding:0.7rem 1rem; background:#fdf8f0; border-bottom:1px solid rgba(107,25,48,0.1);">Bank</th>
+                  <th style="font-size:0.7rem; font-weight:800; text-transform:uppercase; color:#6b1930; padding:0.7rem 0.6rem; background:#fdf8f0; border-bottom:1px solid rgba(107,25,48,0.1); width:70px;">Tier</th>
+                  <th style="font-size:0.7rem; font-weight:800; text-transform:uppercase; color:#6b1930; padding:0.7rem 0.6rem; background:#fdf8f0; border-bottom:1px solid rgba(107,25,48,0.1); width:90px;">Coverage</th>
+                </tr>
+              </thead>
               <tbody id="coverage-body">
               {% for bank in coverage %}
-                <tr>
-                  <td class="fw-semibold text-navy">{{ bank.bank }}</td>
-                  <td>{{ bank.count }} / {{ bank.total }}</td>
-                  <td><span class="coverage-pill {{ bank.color }}">{{ bank.percentage }}%</span></td>
-                  <td class="small text-secondary">{{ bank.missing|join(", ") if bank.missing else "All roles covered" }}</td>
+                <tr style="border-bottom:1px solid rgba(107,25,48,0.07);">
+                  <td style="padding:0.65rem 1rem; font-weight:600; color:#1a1a1a; font-size:0.84rem;">{{ bank.bank }}</td>
+                  <td style="padding:0.65rem 0.6rem;">
+                    {% if bank.tier == "Tier 1" %}
+                      <span class="tier-badge tier-1">Tier 1</span>
+                    {% elif bank.tier == "Tier 2" %}
+                      <span class="tier-badge tier-2">Tier 2</span>
+                    {% elif bank.tier == "Tier 3" %}
+                      <span class="tier-badge tier-3">Tier 3</span>
+                    {% endif %}
+                  </td>
+                  <td style="padding:0.65rem 0.6rem;"><span class="coverage-pill {{ bank.color }}">{{ bank.percentage }}%</span></td>
                 </tr>
               {% else %}
-                <tr><td colspan="4" class="text-center text-secondary py-4">Upload a workbook to see bank coverage.</td></tr>
+                <tr><td colspan="3" class="text-center text-muted py-4" style="font-size:0.84rem;">Upload a workbook to see bank coverage.</td></tr>
               {% endfor %}
               </tbody>
             </table>
@@ -149,201 +162,197 @@
         </div>
       </div>
       <div class="col-lg-4">
-        <div class="panel h-100 shadow-sm d-flex flex-column">
-          <div class="panel-heading d-flex justify-content-between align-items-start border-bottom">
+        <div class="panel h-100 d-flex flex-column">
+          <div class="panel-header">
             <div>
-              <h2 class="h5 fw-bold mb-1 text-navy">AI Strategic Insights</h2>
-              <p class="small text-secondary mb-0">Executive prioritization &amp; outreach angles.</p>
+              <h2 class="h5 fw-bold mb-0">AI Strategic Insights</h2>
+              <p class="small mb-0 mt-1">Executive prioritization &amp; outreach angles</p>
             </div>
-            <button type="button" id="insights-button" class="btn btn-sm btn-outline-primary">✨ Generate</button>
+            <button type="button" id="insights-button" class="btn btn-sm btn-gold px-3">✨ Generate</button>
           </div>
-          <div id="insights-content" class="insights-content text-secondary small flex-grow-1">
+          <div id="insights-content" class="insights-panel-body flex-grow-1">
             Click "Generate" to analyze coverage across all 22 UAE banks and receive executive outreach angles tailored for Amanah Data Solutions.
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- Main Executive Pipeline Table & Interactive Controls -->
-    <section class="panel shadow-sm border rounded-3 overflow-hidden bg-white">
-      <div class="panel-heading bg-white border-bottom p-3">
-        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+    <!-- ═══ MAIN EXECUTIVE TABLE ═══ -->
+    <div class="table-panel">
+      <div class="table-panel-header">
+        <div class="d-flex flex-wrap justify-content-between align-items-start gap-3">
           <div>
-            <div class="d-flex align-items-center gap-2">
-              <h2 class="h5 fw-bold mb-0 text-navy">Executive Directory &amp; Outreach Tracker</h2>
-              <span class="badge bg-light text-navy border fw-bold" id="matching-count">{{ stats.total_contacts }} Executives</span>
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <h2 class="h5 fw-bold mb-0 text-white">Executive Directory &amp; Outreach Tracker</h2>
+              <span class="badge fw-bold py-1 px-2" id="matching-count" style="background:rgba(200,151,58,0.2); color:var(--gold-light); border:1px solid rgba(200,151,58,0.3); font-size:0.72rem;">{{ stats.total_contacts }} Executives</span>
             </div>
-            <p class="small text-secondary mb-0 mt-1">One-click email drafting in Gmail, LinkedIn message sequences, and live delivery status logging.</p>
-          </div>
-          <div class="d-flex flex-wrap align-items-center gap-2">
-            <!-- Bank Selector Filter -->
-            <select id="bank-filter" class="form-select form-select-sm bank-select shadow-sm" aria-label="Filter by UAE Bank">
-              <option value="all">🏦 All UAE Banks (22)</option>
-            </select>
-            <!-- Channel / Outreach Status Filter -->
-            <select id="email-filter" class="form-select form-select-sm filter-select shadow-sm" aria-label="Filter by outreach channel">
-              <option value="all">🔍 All Outreach Statuses</option>
-              <option value="emailed">✉️ Emailed (Proposal Sent)</option>
-              <option value="not_emailed">⏳ Pending Email (Not Sent)</option>
-              <option value="li_contacted">💼 LinkedIn Contacted</option>
-              <option value="li_pending">⏳ Pending LinkedIn Contact</option>
-              <option value="email">Has Email Address</option>
-              <option value="multi_email">Multiple Emails (Multi-Inbox)</option>
-              <option value="linkedin_only">Contact via LinkedIn Only</option>
-              <option value="both">Both Email &amp; LinkedIn Available</option>
-            </select>
-            <!-- Search Box -->
-            <input id="search-input" class="form-control form-control-sm search-input shadow-sm" type="search" placeholder="Search name, bank, designation...">
-            <button type="button" id="discover-all" class="btn btn-sm btn-outline-primary text-nowrap" {% if not has_contacts %}disabled{% endif %}>🔍 Find Missing</button>
+            <p class="small mb-0" style="color:rgba(255,255,255,0.6);">One-click Gmail drafting, LinkedIn sequences, and live delivery status per executive.</p>
           </div>
         </div>
       </div>
 
-      <div id="action-message" class="px-3 pt-3"></div>
+      <!-- Controls -->
+      <div class="table-controls">
+        <select id="bank-filter" class="form-select form-select-sm bank-select" aria-label="Filter by bank">
+          <option value="all">🏦 All UAE Banks (22)</option>
+        </select>
+        <select id="email-filter" class="form-select form-select-sm filter-select" aria-label="Filter by outreach status">
+          <option value="all">🔍 All Outreach Statuses</option>
+          <option value="emailed">✉️ Emailed — Proposal Sent</option>
+          <option value="not_emailed">⏳ Pending Email</option>
+          <option value="li_contacted">💼 LinkedIn Contacted</option>
+          <option value="li_pending">⏳ Pending LinkedIn</option>
+          <option value="email">Has Email Address</option>
+          <option value="multi_email">Multiple Emails (Multi-Inbox)</option>
+          <option value="linkedin_only">LinkedIn Only</option>
+          <option value="both">Both Email &amp; LinkedIn</option>
+        </select>
+        <input id="search-input" class="form-control form-control-sm search-input" type="search" placeholder="Search name, bank, role…">
+        <button type="button" id="discover-all" class="btn btn-sm btn-outline-secondary text-nowrap" {% if not has_contacts %}disabled{% endif %}>🔍 Find Missing</button>
+      </div>
+
+      <div id="action-message" class="px-4 pt-3"></div>
 
       <div class="table-responsive">
         <table class="table table-hover align-middle contacts-table mb-0">
           <thead><tr>
-            <th class="text-center serial-th" style="width: 48px;">#</th>
+            <th class="serial-th" style="width:46px;">#</th>
             <th data-sort="Bank Name">Bank <span>↕</span></th>
             <th data-sort="Person Name">Executive &amp; Role <span>↕</span></th>
             <th>Email Address(es)</th>
-            <th>LinkedIn Profile</th>
-            <th data-sort="Confidence Score" title="Confidence Score is based on verified corporate email and direct LinkedIn profile availability.">Score <span>ℹ️</span></th>
-            <th>Channel Status</th>
-            <th class="text-center" style="min-width: 140px;">Live Tracker</th>
-            <th class="text-center" style="min-width: 180px;">Outreach Actions</th>
+            <th>LinkedIn</th>
+            <th data-sort="Confidence Score" title="Confidence Score: based on verified email &amp; LinkedIn availability">Score</th>
+            <th>Channel</th>
+            <th class="text-center" style="min-width:140px;">Live Tracker</th>
+            <th class="text-center" style="min-width:200px;">Outreach Actions</th>
           </tr></thead>
           <tbody id="contacts-body">
-            <tr><td colspan="9" class="text-center text-secondary py-5">Loading executive directory…</td></tr>
+            <tr><td colspan="9" class="text-center py-5" style="color:var(--muted);">Loading executive directory…</td></tr>
           </tbody>
         </table>
       </div>
+
       <div id="empty-state" class="empty-state {% if has_contacts %}d-none{% endif %}">
-        <div class="empty-icon">+</div><h3 class="h6">Start with an Excel contact list</h3>
-        <p class="small text-secondary mb-0">Your file needs Bank Name, Person Name and Designation columns.</p>
+        <div class="empty-icon">🏦</div>
+        <h3 class="h6 fw-bold" style="color:var(--maroon);">Start with an Executive Workbook</h3>
+        <p class="small text-muted mb-0">Upload your UAE Banks Excel file above to begin outreach tracking.</p>
       </div>
-    </section>
+    </div>
+
   </main>
 
-  <!-- Edit Contact Modal -->
+  <!-- ═══ EDIT MODAL ═══ -->
   <div class="modal fade" id="edit-modal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-scrollable"><div class="modal-content shadow">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable"><div class="modal-content">
       <form id="edit-form">
-        <div class="modal-header bg-light">
-          <div><h2 class="modal-title fs-5 fw-bold text-navy">Edit Executive Details</h2><p class="small text-secondary mb-0">Changes are saved automatically to the local workbook.</p></div>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        <div class="modal-header-dark">
+          <div><h2 class="modal-title fs-5 fw-bold">Edit Executive Details</h2><p class="small mb-0 mt-1">Changes save automatically to the workbook.</p></div>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body p-4">
           <input type="hidden" id="edit-id">
           <div class="row g-3">
-            <div class="col-md-4"><label class="form-label fw-semibold small">Bank</label><input class="form-control" id="edit-bank" required></div>
-            <div class="col-md-4"><label class="form-label fw-semibold small">Name</label><input class="form-control" id="edit-name" required></div>
-            <div class="col-md-4"><label class="form-label fw-semibold small">Designation</label><input class="form-control" id="edit-designation"></div>
+            <div class="col-md-4"><label class="form-label fw-bold small">Bank</label><input class="form-control" id="edit-bank" required></div>
+            <div class="col-md-4"><label class="form-label fw-bold small">Name</label><input class="form-control" id="edit-name" required></div>
+            <div class="col-md-4"><label class="form-label fw-bold small">Designation</label><input class="form-control" id="edit-designation"></div>
             <div class="col-md-6">
-              <label class="form-label fw-semibold small">Email <span class="text-secondary fw-normal">(comma-separated if multiple)</span></label>
-              <input class="form-control" type="text" id="edit-email" placeholder="e.g. email1@bank.com, email2@bank.com">
+              <label class="form-label fw-bold small">Email <span class="text-muted fw-normal">(comma-separated for multiple)</span></label>
+              <input class="form-control" type="text" id="edit-email" placeholder="e.g. ceo@bank.ae, ceo2@bank.ae">
             </div>
-            <div class="col-md-6"><label class="form-label fw-semibold small">LinkedIn Profile URL</label><input class="form-control" type="url" id="edit-linkedin" placeholder="https://www.linkedin.com/in/..."></div>
-            <div class="col-md-6"><label class="form-label fw-semibold small">Email Status</label><input class="form-control" id="edit-email-status"></div>
-            <div class="col-md-6"><label class="form-label fw-semibold small">LinkedIn Status</label><input class="form-control" id="edit-linkedin-status"></div>
-            <div class="col-12"><label class="form-label fw-semibold small">Remarks / Sources</label><textarea class="form-control" id="edit-remarks" rows="2"></textarea></div>
-            <div class="col-12 d-flex flex-wrap gap-4 p-3 bg-light rounded-3 border">
-              <div class="form-check"><input class="form-check-input" type="checkbox" id="edit-approved"><label class="form-check-label fw-semibold" for="edit-approved">✓ Approved Contact</label></div>
-              <div class="form-check"><input class="form-check-input" type="checkbox" id="edit-email-sent"><label class="form-check-label fw-semibold text-success" for="edit-email-sent">✉️ Email Sent (Tracker)</label></div>
-              <div class="form-check"><input class="form-check-input" type="checkbox" id="edit-linkedin-contacted"><label class="form-check-label fw-semibold text-primary" for="edit-linkedin-contacted">💼 LinkedIn Contacted (Tracker)</label></div>
+            <div class="col-md-6"><label class="form-label fw-bold small">LinkedIn URL</label><input class="form-control" type="url" id="edit-linkedin" placeholder="https://www.linkedin.com/in/..."></div>
+            <div class="col-md-6"><label class="form-label fw-bold small">Email Status</label><input class="form-control" id="edit-email-status"></div>
+            <div class="col-md-6"><label class="form-label fw-bold small">LinkedIn Status</label><input class="form-control" id="edit-linkedin-status"></div>
+            <div class="col-12"><label class="form-label fw-bold small">Remarks / Sources</label><textarea class="form-control" id="edit-remarks" rows="2"></textarea></div>
+            <div class="col-12 d-flex flex-wrap gap-4 p-3 rounded-3" style="background:#fdf8f0; border:1px solid rgba(107,25,48,0.1);">
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="edit-approved"><label class="form-check-label fw-semibold" for="edit-approved">✓ Approved</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="edit-email-sent"><label class="form-check-label fw-semibold text-success" for="edit-email-sent">✉️ Email Sent</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="edit-linkedin-contacted"><label class="form-check-label fw-semibold text-primary" for="edit-linkedin-contacted">💼 LinkedIn Contacted</label></div>
             </div>
           </div>
         </div>
-        <div class="modal-footer bg-light"><button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button><button class="btn btn-navy" type="submit">Save Changes</button></div>
+        <div class="modal-footer"><button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button><button class="btn btn-maroon" type="submit">Save Changes</button></div>
       </form>
     </div></div>
   </div>
 
-  <!-- Email Compose Modal -->
+  <!-- ═══ EMAIL MODAL ═══ -->
   <div class="modal fade" id="email-modal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg"><div class="modal-content shadow-lg">
-      <div class="modal-header bg-navy text-white">
+    <div class="modal-dialog modal-lg"><div class="modal-content">
+      <div class="modal-header-dark">
         <div>
-          <h2 class="modal-title fs-5 fw-bold text-white mb-0">✉️ Amanah Data Solutions — Executive Proposal</h2>
-          <p id="email-contact-label" class="small text-white-50 mb-0 mt-1"></p>
+          <h2 class="modal-title fs-5 fw-bold">✉️ Personalized Email Proposal</h2>
+          <p id="email-contact-label" class="small mb-0 mt-1"></p>
         </div>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body p-4">
-        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3 p-3 bg-light rounded-3 border">
+        <div class="action-bar d-flex flex-wrap align-items-center justify-content-between gap-2 mb-4">
           <div class="d-flex flex-wrap gap-2">
-            <button id="generate-email" class="btn btn-sm btn-primary fw-semibold">✨ Generate AI Proposal</button>
-            <button id="open-gmail" class="btn btn-sm btn-danger fw-semibold" disabled>📧 Open in Gmail (Draft &amp; Send)</button>
-            <button id="open-email" class="btn btn-sm btn-outline-secondary" disabled>✉️ Default Mail App</button>
-            <button id="copy-email-all" class="btn btn-sm btn-outline-secondary" disabled>📋 Copy Text</button>
+            <button id="generate-email" class="btn btn-sm btn-maroon fw-bold">✨ Generate Proposal</button>
+            <button id="open-gmail" class="btn btn-sm btn-danger fw-bold" disabled>📧 Open in Gmail</button>
+            <button id="open-email" class="btn btn-sm btn-outline-secondary" disabled>✉️ Mail App</button>
+            <button id="copy-email-all" class="btn btn-sm btn-outline-secondary" disabled>📋 Copy</button>
           </div>
-          <div>
-            <button type="button" id="modal-toggle-emailed" class="btn btn-sm btn-outline-success fw-semibold">⏳ Mark as Emailed</button>
-          </div>
+          <button type="button" id="modal-toggle-emailed" class="btn btn-sm btn-outline-success fw-bold">⏳ Mark as Emailed</button>
         </div>
         <div class="mb-3">
-          <label class="form-label fw-bold small text-navy mb-1">Recipients (To)</label>
-          <input id="email-recipients-display" class="form-control form-control-sm bg-light text-dark fw-semibold" readonly>
+          <label class="form-label fw-bold small" style="color:var(--maroon);">Recipients (To)</label>
+          <input id="email-recipients-display" class="form-control form-control-sm fw-semibold" style="background:#fdf8f0;" readonly>
         </div>
         <div class="mb-3">
-          <label class="form-label fw-bold small text-navy mb-1">Subject</label>
-          <input id="email-subject" class="form-control fw-medium">
+          <label class="form-label fw-bold small" style="color:var(--maroon);">Subject Line</label>
+          <input id="email-subject" class="form-control">
         </div>
         <div>
-          <label class="form-label fw-bold small text-navy mb-1">Body (4-Paragraph Amanah Consultative Framework)</label>
-          <textarea id="email-body" class="form-control message-preview" rows="10"></textarea>
+          <label class="form-label fw-bold small" style="color:var(--maroon);">4-Paragraph Amanah Consultative Proposal</label>
+          <textarea id="email-body" class="form-control message-preview" rows="11"></textarea>
         </div>
-        <div class="alert alert-info py-2 px-3 mt-3 mb-0 small d-flex align-items-center gap-2">
-          <span>💡</span>
-          <span>Clicking <strong>"Open in Gmail"</strong> automatically opens Gmail in your browser with recipients, subject, and proposal pre-filled, and updates your outreach tracker.</span>
+        <div class="alert alert-warning py-2 px-3 mt-3 mb-0 small" style="border-radius:8px;">
+          💡 <strong>Open in Gmail</strong> pre-fills all recipients, subject, and your 4-paragraph proposal in a new Gmail tab — ready to review and send.
         </div>
       </div>
     </div></div>
   </div>
 
-  <!-- LinkedIn Outreach Modal -->
+  <!-- ═══ LINKEDIN MODAL ═══ -->
   <div class="modal fade" id="linkedin-modal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg"><div class="modal-content shadow-lg">
-      <div class="modal-header bg-navy text-white">
+    <div class="modal-dialog modal-lg"><div class="modal-content">
+      <div class="modal-header-dark">
         <div>
-          <h2 class="modal-title fs-5 fw-bold text-white mb-0">💼 Amanah Data Solutions — LinkedIn Sequence</h2>
-          <p id="linkedin-contact-label" class="small text-white-50 mb-0 mt-1"></p>
+          <h2 class="modal-title fs-5 fw-bold">💼 LinkedIn Outreach Sequence</h2>
+          <p id="linkedin-contact-label" class="small mb-0 mt-1"></p>
         </div>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body p-4">
-        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3 p-3 bg-light rounded-3 border">
+        <div class="action-bar d-flex flex-wrap align-items-center justify-content-between gap-2 mb-4">
           <div class="d-flex flex-wrap gap-2">
-            <button id="generate-linkedin" class="btn btn-sm btn-primary fw-semibold">✨ Generate Sequences</button>
-            <button id="open-linkedin" class="btn btn-sm btn-linkedin text-white fw-semibold" disabled>🌐 Open LinkedIn Profile &amp; Send</button>
+            <button id="generate-linkedin" class="btn btn-sm btn-maroon fw-bold">✨ Generate Sequences</button>
+            <button id="open-linkedin" class="btn btn-sm btn-linkedin-modal fw-bold" disabled>🌐 Open Profile &amp; Send</button>
           </div>
-          <div>
-            <button type="button" id="modal-toggle-li" class="btn btn-sm btn-outline-info fw-semibold">⏳ Mark as Contacted</button>
-          </div>
+          <button type="button" id="modal-toggle-li" class="btn btn-sm btn-outline-info fw-bold">⏳ Mark as Contacted</button>
         </div>
         <div class="mb-3">
-          <label class="form-label fw-bold small text-navy mb-1">Executive Profile URL</label>
-          <input id="linkedin-profile-display" class="form-control form-control-sm bg-light text-dark fw-semibold" readonly>
+          <label class="form-label fw-bold small" style="color:var(--maroon);">Profile URL</label>
+          <input id="linkedin-profile-display" class="form-control form-control-sm fw-semibold" style="background:#fdf8f0;" readonly>
         </div>
         <div class="mb-3">
           <div class="d-flex justify-content-between align-items-center mb-1">
-            <label class="form-label fw-bold small text-navy mb-0">1. Connection Request Note <span class="text-secondary fw-normal">(Strictly &lt; 300 chars)</span></label>
-            <span id="char-count-connection" class="badge bg-light text-secondary border small">0 / 300</span>
+            <label class="form-label fw-bold small mb-0" style="color:var(--maroon);">1. Connection Request <span class="text-muted fw-normal">(max 300 chars)</span></label>
+            <span id="char-count-connection" class="badge bg-light text-muted border small">0 / 300</span>
           </div>
-          <div class="input-group"><textarea id="linkedin-connection" class="form-control message-preview" rows="2"></textarea><button class="btn btn-outline-secondary copy-message fw-semibold" data-target="linkedin-connection">📋 Copy</button></div>
+          <div class="input-group"><textarea id="linkedin-connection" class="form-control message-preview" rows="2"></textarea><button class="btn btn-outline-secondary copy-message fw-bold" data-target="linkedin-connection">📋 Copy</button></div>
         </div>
         <div class="mb-3">
-          <label class="form-label fw-bold small text-navy mb-1">2. Introduction Direct Message / InMail</label>
-          <div class="input-group"><textarea id="linkedin-intro" class="form-control message-preview" rows="4"></textarea><button class="btn btn-outline-secondary copy-message fw-semibold" data-target="linkedin-intro">📋 Copy</button></div>
+          <label class="form-label fw-bold small mb-1" style="color:var(--maroon);">2. Introduction Message / InMail</label>
+          <div class="input-group"><textarea id="linkedin-intro" class="form-control message-preview" rows="4"></textarea><button class="btn btn-outline-secondary copy-message fw-bold" data-target="linkedin-intro">📋 Copy</button></div>
         </div>
         <div>
-          <label class="form-label fw-bold small text-navy mb-1">3. Follow-Up Message (5-7 Days)</label>
-          <div class="input-group"><textarea id="linkedin-followup" class="form-control message-preview" rows="3"></textarea><button class="btn btn-outline-secondary copy-message fw-semibold" data-target="linkedin-followup">📋 Copy</button></div>
+          <label class="form-label fw-bold small mb-1" style="color:var(--maroon);">3. Follow-Up Message (Day 5–7)</label>
+          <div class="input-group"><textarea id="linkedin-followup" class="form-control message-preview" rows="3"></textarea><button class="btn btn-outline-secondary copy-message fw-bold" data-target="linkedin-followup">📋 Copy</button></div>
         </div>
-        <div class="alert alert-info py-2 px-3 mt-3 mb-0 small d-flex align-items-center gap-2">
-          <span>💡</span>
-          <span>Click <strong>"Copy"</strong> on any message, then click <strong>"Open LinkedIn Profile"</strong> to jump straight to their chat/connect screen. It automatically logs the outreach in your tracker.</span>
+        <div class="alert alert-warning py-2 px-3 mt-3 mb-0 small" style="border-radius:8px;">
+          💡 Copy any message, then click <strong>"Open Profile &amp; Send"</strong> — it opens LinkedIn and auto-logs the outreach in your tracker.
         </div>
       </div>
     </div></div>
